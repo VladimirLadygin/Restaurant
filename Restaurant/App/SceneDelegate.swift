@@ -2,7 +2,7 @@
 //  SceneDelegate.swift
 //  Restaurant
 //
-//  Created by Владимир Ладыгин on 04.06.2022.
+//  Created by Владимир Ладыгин on 05.06.2022.
 //
 
 import UIKit
@@ -49,4 +49,3 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 
 }
-
