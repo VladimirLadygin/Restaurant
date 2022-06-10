@@ -29,18 +29,34 @@
         <!--Order-->
         <scene sceneID="0qI-Wv-Q7y">
             <objects>
-                <tableViewController id="LUM-2G-g15" sceneMemberID="viewController">
+                <tableViewController id="LUM-2G-g15" customClass="OrderTableViewController" customModule="Restaurant" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="5br-DX-Zow">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="mvf-yf-kMo">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="OrderCell" textLabel="G4c-bJ-1gc" detailTextLabel="0e2-q1-VYn" style="IBUITableViewCellStyleValue1" id="mvf-yf-kMo">
                                 <rect key="frame" x="0.0" y="44.5" width="414" height="43.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="mvf-yf-kMo" id="v1k-NE-NXe">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="G4c-bJ-1gc">
+                                            <rect key="frame" x="20" y="15" width="25" height="14.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="0e2-q1-VYn">
+                                            <rect key="frame" x="361" y="15" width="33" height="14.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
                                 </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
@@ -100,7 +116,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="8T4-uP-eRk" kind="show" identifier="ItemSegue" id="Ytk-ja-sE0"/>
+                                    <segue destination="8T4-uP-eRk" kind="show" identifier="MenuSegue" id="Ytk-ja-sE0"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -115,7 +131,7 @@
             </objects>
             <point key="canvasLocation" x="-407.24637681159425" y="-1083.4821428571429"/>
         </scene>
-        <!--Category-->
+        <!--Category Menu-->
         <scene sceneID="fqR-PI-xeL">
             <objects>
                 <tableViewController id="8T4-uP-eRk" customClass="MenuTableViewController" customModule="Restaurant" customModuleProvider="target" sceneMemberID="viewController">
@@ -148,7 +164,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="gJT-F6-dvA" kind="show" identifier="" id="hdj-9n-2eq"/>
+                                    <segue destination="gJT-F6-dvA" kind="show" identifier="ItemSegue" id="hdj-9n-2eq"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -157,7 +173,7 @@
                             <outlet property="delegate" destination="8T4-uP-eRk" id="KGe-56-7pD"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Category" id="Pxe-Gl-nWA"/>
+                    <navigationItem key="navigationItem" title="Category Menu" id="Pxe-Gl-nWA"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8bd-c4-Hzy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -203,6 +219,9 @@
                                                 <state key="normal" title="Add to order">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="orderButtonTapped:" destination="gJT-F6-dvA" eventType="touchUpInside" id="T24-y2-QsW"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <variation key="heightClass=compact" axis="horizontal"/>
@@ -220,6 +239,12 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Spaghetti and Meatballs" largeTitleDisplayMode="never" id="f6i-gG-uQP"/>
+                    <connections>
+                        <outlet property="addToOrderButton" destination="aW0-I0-99C" id="lpy-5Y-QJL"/>
+                        <outlet property="detailTextLabel" destination="hNb-ve-mUJ" id="u2O-fY-Euc"/>
+                        <outlet property="imageView" destination="rPO-AL-0ir" id="mGF-nf-ybd"/>
+                        <outlet property="priceLabel" destination="Ibf-vS-aGC" id="5CU-gf-5ob"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9F5-h9-Df5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
