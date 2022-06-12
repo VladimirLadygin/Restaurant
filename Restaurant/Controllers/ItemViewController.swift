@@ -28,7 +28,7 @@ class ItemViewController: UIViewController {
     func updateUI() {
         navigationItem.title = menuItem.name
         imageView.image = menuItem.image
-        priceLabel.text = menuItem.formattedPrice
+        priceLabel.text = menuItem.price.formattedHundreds
         detailTextLabel.text = menuItem.detailText
     }
     
@@ -39,5 +39,6 @@ class ItemViewController: UIViewController {
             self.addToOrderButton.transform = CGAffineTransform(scaleX: 3, y: 3)
             self.addToOrderButton.transform = CGAffineTransform.identity  
         }
+        OrderManager.shared.order.menuItems.append(menuItem)
     }
 }

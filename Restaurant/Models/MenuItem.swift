@@ -45,8 +45,3 @@ class MenuItem: Codable {
     }
 }
 
-extension MenuItem {
-    var formattedPrice: String {
-       return String(format: "$%.2f", price)
-    }
-}
