@@ -86,9 +86,6 @@ class OrderTableViewController: UITableViewController {
     func checkEditButton() {
         navigationItem.rightBarButtonItem?.isEnabled = OrderManager.shared.order.menuItems.count != 0 ? true : false
         navigationItem.leftBarButtonItem?.isEnabled = OrderManager.shared.order.menuItems.count != 0 ? true : false
-        //           submitButton?.isEnabled = OrderManager.shared.order.menuItems.count != 0 ? true : false
-        dump(OrderManager.shared.order.menuItems.count)
-        print(navigationItem.rightBarButtonItem?.isEnabled)
     }
     
     

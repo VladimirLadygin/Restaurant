@@ -45,6 +45,7 @@
 		E7E3DD34284D114D000089FF /* URL+Extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Extention.swift"; sourceTree = "<group>"; };
 		E7E3DD36284D19E5000089FF /* MenuTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewController.swift; sourceTree = "<group>"; };
 		E7F209902851152400511A33 /* ItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemViewController.swift; sourceTree = "<group>"; };
+		E7F91561285A07A30065E150 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		E7F9741C284BCCC300ADA3C8 /* Restaurant.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Restaurant.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7F97426284BCCC400ADA3C8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E7F97428284BCCC600ADA3C8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -97,6 +98,7 @@
 		E7F97413284BCCC300ADA3C8 = {
 			isa = PBXGroup;
 			children = (
+				E7F91561285A07A30065E150 /* README.md */,
 				E7F9741E284BCCC300ADA3C8 /* Restaurant */,
 				E7F9741D284BCCC300ADA3C8 /* Products */,
 			);
