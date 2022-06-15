@@ -8,6 +8,9 @@
 import UIKit
 
 class OrderTableViewController: UITableViewController {
+    
+    @IBOutlet weak var submitButton: UIBarButtonItem!
+    
     // MARK: - Constants
     let cellManager = CellManager()
     let networkManager = NetworkManager()
@@ -15,15 +18,7 @@ class OrderTableViewController: UITableViewController {
     // MARK: - Stored Properties
     var minutes = 0
     
-    //MARK: - UIViewController Methods
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        NotificationCenter.default.addObserver(
-            tableView!,
-            selector: #selector(UITableView.reloadData),
-            name: OrderManager.orderUpdateNotification,
-            object: nil)
-    }
+    
     
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -36,9 +31,27 @@ class OrderTableViewController: UITableViewController {
         OrderManager.shared.order = Order()
         
     }
+    //MARK: - UIViewController Methods
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        checkEditButton()
+        
+        //Added Edited Button
+        navigationItem.setLeftBarButton(editButtonItem, animated: false)
+        NotificationCenter.default.addObserver(
+            tableView!,
+            selector: #selector(UITableView.reloadData),
+            name: OrderManager.orderUpdateNotification,
+            object: nil
+        )
+        
+    }
     
     // MARK: - UITableViewSource
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        // Hide Edit Button Edit and Submit, if OrderList is Empty.
+        checkEditButton()
         return OrderManager.shared.order.menuItems.count
     }
     
@@ -70,6 +83,15 @@ class OrderTableViewController: UITableViewController {
         
     }
     
+    func checkEditButton() {
+        navigationItem.rightBarButtonItem?.isEnabled = OrderManager.shared.order.menuItems.count != 0 ? true : false
+        navigationItem.leftBarButtonItem?.isEnabled = OrderManager.shared.order.menuItems.count != 0 ? true : false
+        //           submitButton?.isEnabled = OrderManager.shared.order.menuItems.count != 0 ? true : false
+        dump(OrderManager.shared.order.menuItems.count)
+        print(navigationItem.rightBarButtonItem?.isEnabled)
+    }
+    
+    
     // MARK: - Actions
     
     @IBAction func submitTapped(_ sender: UIBarButtonItem) {
@@ -88,3 +110,29 @@ class OrderTableViewController: UITableViewController {
     }
     
 }
+
+extension OrderTableViewController /*: UITableViewDelegate */  {
+    override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        return .delete
+    }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        switch editingStyle {
+        case .delete:
+            OrderManager.shared.order.menuItems.remove(at: indexPath.row)
+        case .insert:
+            break
+        case .none:
+            break
+        @unknown default:
+            
+            break
+            
+        }
+        checkEditButton()
+    }
+    
+}
+
+
+
