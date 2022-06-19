@@ -8,4 +8,5 @@ Basic functionality:
 - sending the finished order to the server and receiving a response from it regarding the readiness time of the ordered dishes.
 Added:
 - Ability to correct the order
-- deactivating the Edit and Submit buttons if the user did not fill in the fields of the order. He cannot send an empty order.
+- Deactivating the Edit and Submit buttons if the user did not fill in the fields of the order. He cannot send an empty order.
+- Groupping of duplicates in the OrderTableViewController into one cell.
