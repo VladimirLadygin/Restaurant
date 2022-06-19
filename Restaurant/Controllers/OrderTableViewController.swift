@@ -15,9 +15,10 @@ class OrderTableViewController: UITableViewController {
     let cellManager = CellManager()
     let networkManager = NetworkManager()
     
+    
     // MARK: - Stored Properties
     var minutes = 0
-    
+    private var orderToView: [[MenuItem]] = []
     
     
     // MARK: - Navigation
@@ -37,6 +38,7 @@ class OrderTableViewController: UITableViewController {
         
         checkEditButton()
         
+        
         //Added Edited Button
         navigationItem.setLeftBarButton(editButtonItem, animated: false)
         NotificationCenter.default.addObserver(
@@ -52,13 +54,21 @@ class OrderTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // Hide Edit Button Edit and Submit, if OrderList is Empty.
         checkEditButton()
-        return OrderManager.shared.order.menuItems.count
+        viewOrderQuantities()
+        
+//        return OrderManager.shared.order.menuItems.count
+        return orderToView.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "OrderCell", for: indexPath)
-        let menuItem = OrderManager.shared.order.menuItems[indexPath.row]
-        cellManager.configure(cell, with: menuItem, for: tableView, indexPath: indexPath)
+//        let menuItem = OrderManager.shared.order.menuItems[indexPath.row]
+        //        cellManager.configure(cell, with: menuItem, for: tableView, indexPath: indexPath)
+        let name = orderToView[indexPath.row].first!.name
+        let price = orderToView[indexPath.row].first!.price
+        let quantity = orderToView[indexPath.row].count
+        cell.textLabel?.text = "\(name) x \(quantity)"
+        cell.detailTextLabel?.text = (price * Double(quantity)).formattedHundreds
         return cell
     }
     
@@ -86,6 +96,12 @@ class OrderTableViewController: UITableViewController {
     func checkEditButton() {
         navigationItem.rightBarButtonItem?.isEnabled = OrderManager.shared.order.menuItems.count != 0 ? true : false
         navigationItem.leftBarButtonItem?.isEnabled = OrderManager.shared.order.menuItems.count != 0 ? true : false
+    }
+    
+    private func viewOrderQuantities () {
+        orderToView = Array(
+            Dictionary(grouping: OrderManager.shared.order.menuItems) { $0.id }.values
+        ).sorted(by: { $0.first!.name < $1.first!.name})
     }
     
     
@@ -116,15 +132,14 @@ extension OrderTableViewController /*: UITableViewDelegate */  {
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         switch editingStyle {
         case .delete:
-            OrderManager.shared.order.menuItems.remove(at: indexPath.row)
+            orderToView.remove(at: indexPath.row)
+            OrderManager.shared.order.menuItems = orderToView.flatMap { $0 }
         case .insert:
             break
         case .none:
             break
         @unknown default:
-            
             break
-            
         }
         checkEditButton()
     }

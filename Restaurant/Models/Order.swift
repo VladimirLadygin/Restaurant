@@ -9,7 +9,7 @@ import Foundation
 
 struct Order {
     var menuItems: [MenuItem]
-    
+
     init(menuItems: [MenuItem] = []){
         self.menuItems = menuItems
     }
