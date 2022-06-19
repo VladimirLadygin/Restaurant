@@ -148,6 +148,7 @@
 				E7E3DD33284D10CA000089FF /* Extentions */,
 				E737CABE284BE7E90094B8A9 /* Manager */,
 				E737CABB284BE6A80094B8A9 /* Models */,
+				E7F91562285FBA550065E150 /* Screenshots */,
 				E7F97436284BCDCA00ADA3C8 /* Resourses */,
 				E7F97435284BCD5800ADA3C8 /* Storyboard */,
 			);
@@ -187,7 +188,6 @@
 		E7F97436284BCDCA00ADA3C8 /* Resourses */ = {
 			isa = PBXGroup;
 			children = (
-				E7F91562285FBA550065E150 /* Screenshots */,
 				E7F97428284BCCC600ADA3C8 /* Assets.xcassets */,
 			);
 			path = Resourses;
