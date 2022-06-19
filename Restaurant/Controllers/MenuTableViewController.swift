@@ -21,8 +21,7 @@ class MenuTableViewController: UITableViewController {
         navigationItem.title = category.localizedCapitalized
         
         networkManager.getMenuItems(for: category) { menuItems, error in
-            guard let menuItems = menuItems else {
-                print(#line, #function, "ERROR", terminator: "")
+            guard let menuItems = menuItems else {              
                 if let error = error {
                     print(error)
                 } else {

@@ -66,9 +66,11 @@ class OrderTableViewController: UITableViewController {
         //        cellManager.configure(cell, with: menuItem, for: tableView, indexPath: indexPath)
         let name = orderToView[indexPath.row].first!.name
         let price = orderToView[indexPath.row].first!.price
+        let image = orderToView[indexPath.row].first!.image
         let quantity = orderToView[indexPath.row].count
         cell.textLabel?.text = "\(name) x \(quantity)"
         cell.detailTextLabel?.text = (price * Double(quantity)).formattedHundreds
+        cell.imageView?.image = image
         return cell
     }
     
