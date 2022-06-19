@@ -11,3 +11,6 @@ Added:
 - Ability to correct the order
 - Deactivating the Edit and Submit buttons if the user did not fill in the fields of the order. He cannot send an empty order.
 - Groupping of duplicates in the OrderTableViewController into one cell.
+|![Screen](https://github.com/VladimirLadygin/Restaurant/blob/main/Restaurant/Screenshots/Screen1.PNG)|![Screen](https://github.com/VladimirLadygin/Restaurant/blob/main/Restaurant/Screenshots/Screen2.PNG)|![Screen](https://github.com/VladimirLadygin/Restaurant/blob/main/Restaurant/Screenshots/Screen3.PNG)|![Screen](https://github.com/VladimirLadygin/Restaurant/blob/main/Restaurant/Screenshots/Screen4.PNG)|
+|----|----|----|----|
+|![Screen](https://github.com/VladimirLadygin/Restaurant/blob/main/Restaurant/Screenshots/Screen5.PNG)|![Screen](https://github.com/VladimirLadygin/Restaurant/blob/main/Restaurant/Screenshots/Screen6.PNG)|![Screen](https://github.com/VladimirLadygin/Restaurant/blob/main/Restaurant/Screenshots/Screen7.PNG)||
